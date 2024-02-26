@@ -9,7 +9,7 @@ val kotestVersion = "5.8.0"
 val libslParserVersion = "stable-SNAPSHOT"
 val javaStdlibApproximationsVersion = "experimental-SNAPSHOT"
 val usvmVersion = "9b91846"
-val jacodbVersion = "1.4-SNAPSHOT"
+val jacodbVersion = "1.4.4"
 val testFilesVersion = "2.0.0"
 val kgitVersion = "1.0.6"
 
@@ -39,6 +39,9 @@ dependencies {
 
     // JacoDB
     implementation("org.jacodb:jacodb-api:$jacodbVersion")
+    implementation("org.jacodb:jacodb-core:$jacodbVersion")
+    implementation("org.jacodb:jacodb-analysis:$jacodbVersion")
+    implementation("org.jacodb:jacodb-approximations:$jacodbVersion")
 }
 
 dependencies {
