@@ -30,5 +30,5 @@ fun ensureRepo(repoUrl: String, repoPath: String): File {
     }
     repo.fetch()
     repo.pull()
-    return repo.repository.directory
+    return repoDir.absoluteFile
 }
