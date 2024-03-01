@@ -12,6 +12,7 @@ val usvmVersion = "f9e3883e"
 val jacodbVersion = "1.4.4"
 val testFilesVersion = "2.0.0"
 val kgitVersion = "1.0.6"
+val ksmtVersion = "0.5.6"
 
 repositories {
     mavenCentral()
@@ -42,6 +43,10 @@ dependencies {
     implementation("org.jacodb:jacodb-core:$jacodbVersion")
     implementation("org.jacodb:jacodb-analysis:$jacodbVersion")
     implementation("org.jacodb:jacodb-approximations:$jacodbVersion")
+
+    // KSMT
+    implementation("io.ksmt:ksmt-core:$ksmtVersion")
+    implementation("io.ksmt:ksmt-z3:$ksmtVersion")
 }
 
 dependencies {
