@@ -10,10 +10,6 @@ import io.ksmt.utils.getValue
 import kotlin.math.pow
 import kotlin.time.Duration.Companion.seconds
 
-interface ApiConstraint {
-    fun toExpr(args: ApiConstraintArgs): KExpr<KBoolSort>
-}
-
 data class ApiConstraintArgs(val layer: Int)
 
 fun main() {

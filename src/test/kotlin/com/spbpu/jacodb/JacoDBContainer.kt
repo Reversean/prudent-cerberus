@@ -10,7 +10,7 @@ import org.usvm.util.classpathWithApproximations
 import java.io.File
 
 val additionalClasspath = listOf<String>(
-    "C:\\Work\\prudent-cerberus\\build\\classes\\kotlin\\test"
+    "build/classes/kotlin/test"
 ).map(::File)
 
 class JacoDBContainer {

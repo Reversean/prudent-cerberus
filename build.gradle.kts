@@ -12,7 +12,8 @@ val usvmVersion = "f9e3883e"
 val jacodbVersion = "1.4.4"
 val testFilesVersion = "2.0.0"
 val kgitVersion = "1.0.6"
-val ksmtVersion = "0.5.6"
+val ksmtVersion = "0.5.16"
+val kfgVersion = "0.4.15"
 
 repositories {
     mavenCentral()
@@ -24,6 +25,7 @@ repositories {
             password = project.findProperty("gpr.key").toString()
         }
     }
+    maven("https://maven.apal-research.com")
 }
 
 dependencies {
@@ -47,6 +49,8 @@ dependencies {
     // KSMT
     implementation("io.ksmt:ksmt-core:$ksmtVersion")
     implementation("io.ksmt:ksmt-z3:$ksmtVersion")
+
+    implementation("org.vorpal.research:kfg:$kfgVersion")
 }
 
 dependencies {

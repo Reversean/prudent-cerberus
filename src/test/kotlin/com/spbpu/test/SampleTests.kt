@@ -12,9 +12,9 @@ import org.usvm.api.util.JcTestInterpreterDecoderApi
 import org.usvm.machine.JcMachine
 import java.io.File
 
-class SampleTests: FunSpec( {
+class SampleTests: FunSpec({
 
-    val jslSpecRepo = File("src/test/resources/libsl")
+    val jslSpecRepo = File("test-data/libsl")
     val dbContainer = JacoDBContainer()
 
     test("Sample") {
