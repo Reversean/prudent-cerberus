@@ -3,13 +3,8 @@ package com.spbpu.test
 import com.spbpu.CustomObjectData
 import com.spbpu.LibSLObjectDecoder
 import com.spbpu.jacodb.JacoDBContainer
-import com.spbpu.util.ensureJslSpecRepo
 import io.kotest.core.spec.style.FunSpec
 import org.jacodb.api.ext.findClass
-import org.usvm.UMachineOptions
-import org.usvm.api.util.JcClassLoader
-import org.usvm.api.util.JcTestInterpreterDecoderApi
-import org.usvm.machine.JcMachine
 import java.io.File
 
 class SampleTests: FunSpec({
