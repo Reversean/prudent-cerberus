@@ -1,4 +1,6 @@
 package com.spbpu.ssa
 
-class FunctionBody {
+class FunctionBody(
+    val block: List<Block>
+) {
 }

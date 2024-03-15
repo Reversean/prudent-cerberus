@@ -9,12 +9,12 @@ class LibslTests : FunSpec({
         val atomicBoolean = libsl.loadFromFileName("java/util/concurrent/atomic/AtomicBoolean.lsl")
         val atomicBooleanMain = libsl.loadFromFileName("java/util/concurrent/atomic/AtomicBoolean.main.lsl")
 
-        val automata = atomicBooleanMain.automata[0]
-        val toStringFun = automata.functions.find { it.name == "toString" }
+        val atomicBooleanAutomaton = atomicBooleanMain.automata[0]
+        val toStringFun = atomicBooleanAutomaton.functions.find { it.name == "toString" }
 
         println(atomicBoolean)
         println(atomicBooleanMain)
-        println(automata)
+        println(atomicBooleanAutomaton)
         println(toStringFun)
     }
 })

@@ -1,13 +1,15 @@
 package com.spbpu.ssa
 
-sealed class Function(
+open class Function(
     name: String,
-    val args: List<FunctionArgument>
+    val body: FunctionBody,
+    val args: List<FunctionArgument> = emptyList()
 ) : Node(name) {
 }
 
 class Constructor(
     name: String,
+    body: FunctionBody,
     args: List<FunctionArgument>
-) : Function(name, args) {
+) : Function(name, body, args) {
 }
