@@ -1,6 +1,7 @@
 package com.spbpu.test
 
 import com.spbpu.CustomObjectData
+import com.spbpu.example.Foo
 import com.spbpu.LibSLObjectDecoder
 import com.spbpu.jacodb.JacoDBContainer
 import io.kotest.core.spec.style.FunSpec
@@ -22,10 +23,3 @@ class SampleTests: FunSpec({
     }
 
 })
-
-class Foo(val a: Int) {
-    private var b = 0
-    fun setB(value: Int) {
-        b = value
-    }
-}

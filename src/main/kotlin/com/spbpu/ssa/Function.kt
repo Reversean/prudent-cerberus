@@ -1,15 +1,32 @@
 package com.spbpu.ssa
 
 open class Function(
-    name: String,
-    val body: FunctionBody,
-    val args: List<FunctionArgument> = emptyList()
+    name: String
 ) : Node(name) {
+    val args: LinkedHashSet<FunctionArgument> = linkedSetOf()
+    val body: LinkedHashSet<Block> = linkedSetOf()
+
+
 }
 
 class Constructor(
+    name: String
+) : Function(name) {
+}
+
+fun Automaton.constructor(
+    build: Constructor.() -> Unit
+): Constructor {
+    val ctor = Constructor("<init>").apply(build)
+    addFunction(ctor)
+    return ctor
+}
+
+fun Automaton.function(
     name: String,
-    body: FunctionBody,
-    args: List<FunctionArgument>
-) : Function(name, body, args) {
+    build: Function.() -> Unit
+): Function {
+    val ctor = Function(name).apply(build)
+    addFunction(ctor)
+    return ctor
 }
