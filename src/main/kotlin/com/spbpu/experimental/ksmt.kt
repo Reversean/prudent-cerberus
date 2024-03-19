@@ -1,4 +1,4 @@
-package com.spbpu
+package com.spbpu.experimental
 
 import io.ksmt.KContext
 import io.ksmt.expr.KApp
@@ -12,7 +12,11 @@ import kotlin.time.Duration.Companion.seconds
 
 data class ApiConstraintArgs(val layer: Int)
 
-fun main() {
+interface ApiConstraint {
+    fun toExpr(args: ApiConstraintArgs): KExpr<KBoolSort>
+}
+
+fun old() {
     // max call stack depth
     val depth = 3
 
@@ -62,3 +66,45 @@ fun KContext.getLayerConstraint(
 }
 
 infix fun Int.pow(other: Int) = this.toDouble().pow(other).toInt()
+
+class Foo {
+    var x: Int = 0
+    var y: Int = 0
+    var z: Int = 0
+
+    fun bar() {
+        x += 5
+        y = 2 * x
+        z = x + y
+    }
+}
+
+fun smt() {
+    val ctx = KContext()
+    with(ctx) {
+
+        val x0 by intSort    // from xInit
+        val y0 by intSort    // from yInit
+        val z0 by intSort    // from zInit
+
+        val x1 by intSort    // to xFinal
+        val y1 by intSort    // to yFinal
+        val z1 by intSort    // to zFinal
+
+        val initState = listOf(x0, y0, z0)
+        val finalState = listOf(x1, y1, z1)
+
+        val instructions = listOf(
+            x1 eq (x0 + 5.expr),    // x += 5
+            y1 eq (2.expr + x1),    // y = 2 * x
+            x1 eq (x1 + y1)         // z = x + y
+        )
+
+        KZ3Solver(this).use { solver ->
+//            beforeMethod(initState)
+            instructions.forEach(solver::assert)
+//            afterMethod(finalState)
+//            solver.check(timeout = 5.seconds)
+        }
+    }
+}
