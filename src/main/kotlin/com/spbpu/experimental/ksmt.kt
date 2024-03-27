@@ -3,6 +3,7 @@ package com.spbpu.experimental
 import io.ksmt.KContext
 import io.ksmt.expr.KApp
 import io.ksmt.expr.KExpr
+import io.ksmt.solver.z3.KZ3SMTLibParser
 import io.ksmt.solver.z3.KZ3Solver
 import io.ksmt.sort.KBoolSort
 import io.ksmt.sort.KIntSort
@@ -67,19 +68,7 @@ fun KContext.getLayerConstraint(
 
 infix fun Int.pow(other: Int) = this.toDouble().pow(other).toInt()
 
-class Foo {
-    var x: Int = 0
-    var y: Int = 0
-    var z: Int = 0
-
-    fun bar() {
-        x += 5
-        y = 2 * x
-        z = x + y
-    }
-}
-
-fun smt() {
+fun main() {
     val ctx = KContext()
     with(ctx) {
 
@@ -104,7 +93,7 @@ fun smt() {
 //            beforeMethod(initState)
             instructions.forEach(solver::assert)
 //            afterMethod(finalState)
-//            solver.check(timeout = 5.seconds)
+            solver.check(timeout = 5.seconds)
         }
     }
 }
