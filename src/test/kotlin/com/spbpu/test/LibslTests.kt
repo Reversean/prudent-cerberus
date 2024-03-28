@@ -5,7 +5,7 @@ import org.jetbrains.research.libsl.LibSL
 
 class LibslTests : FunSpec({
     test("AtomicBoolean") {
-        val libsl = LibSL("test-data/libsl")
+        val libsl = LibSL("src/main/resources/libsl")
         val atomicBoolean = libsl.loadFromFileName("java/util/concurrent/atomic/AtomicBoolean.lsl")
         val atomicBooleanMain = libsl.loadFromFileName("java/util/concurrent/atomic/AtomicBoolean.main.lsl")
 
@@ -19,8 +19,8 @@ class LibslTests : FunSpec({
     }
 
     test("Foo") {
-        val libsl = LibSL("test-data/libsl")
-        val library = libsl.loadFromFileName("com/spbpu/example/Foo.lsl")
+        val libsl = LibSL("src/main/resources/libsl")
+        val library = libsl.loadFromFileName("com/spbpu/experimental/Example.lsl")
         val automaton = library.automata.first()
 
         println(automaton)
